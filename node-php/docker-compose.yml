@@ -1,0 +1,19 @@
+# Docker compose version
+version: "3.9"
+
+# Docker services
+services:
+  # Service name
+  players:
+    # Build source
+    build: ./players
+    # Published ports
+    ports:
+      - 3001:80
+  view:
+    build: ./view
+    ports:
+      - 80:8080
+    # Express dependencies between services
+    depends_on:
+      - players
