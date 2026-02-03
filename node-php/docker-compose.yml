@@ -10,6 +10,8 @@ services:
     # Published ports
     ports:
       - 3001:80
+    volumes:
+      - ./players:/players
   view:
     build: ./view
     ports:
@@ -17,3 +19,6 @@ services:
     # Express dependencies between services
     depends_on:
       - players
+    # Volume mount for hot reload
+    volumes:
+      - ./view:/src
